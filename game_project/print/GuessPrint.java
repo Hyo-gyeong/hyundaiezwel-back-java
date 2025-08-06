@@ -6,12 +6,12 @@ public class GuessPrint {
     str = "어떤 숫자일까요? 알아 맞혀 보세요! (1-10)\n"+
           "---------------------------------------\n"+
           "숫자입력 : ";
-    System.out.println(str);
+    System.out.print(str);
   }
 
   public static void correctMessage(int number){
     str = "맞혔습니다! 나의 숫자는 "+number+"입니다";
-    System.out.print(str);
+    System.out.println(str);
   }
 
   public static void wrongMessage(){

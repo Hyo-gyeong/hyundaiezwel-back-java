@@ -1,7 +1,5 @@
 package game_project.service.user;
 
-import java.util.HashMap;
-
 import game_project.exception.UserException;
 import game_project.interfaces.user.AccountInterface;
 import game_project.user.UserDAO;
@@ -14,23 +12,19 @@ public class UserAccountService implements AccountInterface{
   @Override
   public boolean userLogin(String id, String pw) {
     for (UserDTO user : UserDAO.userMap.values()){
-      if (user.getId().equals(id) && user.getName().equals(pw)){
+      if (user.getId().equals(id) && user.getPw().equals(pw)){
+        System.out.println("로그인 성공!");
         return true;
       }
     }
+    System.out.println("로그인 실패!");
     return false;
   }
-
-  @Override
-  public void logout() {
-
-  }
-  
   @Override
   public UserDTO signup(UserDTO newUser) {
     UserDAO userDAO = new UserDAO();
     try{
-      UserValidator.validateIfUserAlreadyExist(UserDAO.userMap, newUser);
+      UserValidator.validateIfUserAlreadyExist(newUser);
       userDAO.addUser(newUser);
     }catch(UserException e){
       System.out.println(e.getMessage());
@@ -39,4 +33,6 @@ public class UserAccountService implements AccountInterface{
     return newUser;
   }
   
+  @Override
+  public void logout() {}
 }

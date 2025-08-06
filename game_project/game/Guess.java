@@ -11,6 +11,8 @@ public class Guess implements GuessInterface{
   @Override
   public void gameStart(){
     // 숫자를 맞출 때까지 진행
+    // 초기 숫자 입력 메시지 출력
+    GuessPrint.guessMessage();
     while (true) {
       try {
         String input = AppStart.sc.next();

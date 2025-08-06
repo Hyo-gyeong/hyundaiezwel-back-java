@@ -23,8 +23,8 @@ public class InputNumberException extends Exception{
   public static void validateChoiceRange(String input) throws InputNumberException{
     int validIntNum = Integer.parseInt(input);
     // 1,2,3,4중에 하나인지 확인
-    if (validIntNum < 1 || validIntNum > 4){
-      throw new InputNumberException( "1,2,3,4 중 하나의 숫자를 입력하세요.");
+    if (validIntNum < 1 || validIntNum > 6){
+      throw new InputNumberException( "1~6 중 하나의 숫자를 입력하세요.");
     }
   }
 

@@ -1,9 +1,8 @@
-package game_project.user;
+package game_project.interfaces.user;
 
-import java.util.HashMap;
+import game_project.user.UserDTO;
 
 public interface UserDAOInterface {
-  public static final HashMap<Integer, UserDTO> userMap = new HashMap<>();
   public void addUser(UserDTO u);
   public void deleteUserByPK(int pk);
   public UserDTO getUserByPK(int pk);

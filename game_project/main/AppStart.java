@@ -5,6 +5,7 @@ import java.util.Scanner;
 import game_project.print.AppPrint;
 import game_project.print.GaBaBoPrint;
 import game_project.service.user.UserAccountService;
+import game_project.user.UserDAO;
 import game_project.user.UserDTO;
 import game_project.game.RSP;
 import game_project.exception.InputNumberException;
@@ -17,6 +18,7 @@ public class AppStart {
   public static void main(String[] args) {
     RSP rsp = new RSP();
     Guess guess = new Guess();
+    UserDAO userDAO = new UserDAO();
     UserAccountService accountService = new UserAccountService();
 
     System.out.println("실행할 번호를 입력하세요.\n1. 회원가입 2.로그인");
