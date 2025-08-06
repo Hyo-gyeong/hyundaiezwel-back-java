@@ -2,6 +2,7 @@ package game_project.service.user;
 
 import game_project.exception.UserException;
 import game_project.interfaces.user.AccountInterface;
+import game_project.print.AppPrint;
 import game_project.user.UserDAO;
 import game_project.user.UserDTO;
 import game_project.validator.UserValidator;
@@ -13,11 +14,11 @@ public class UserAccountService implements AccountInterface{
   public boolean userLogin(String id, String pw) {
     for (UserDTO user : UserDAO.userMap.values()){
       if (user.getId().equals(id) && user.getPw().equals(pw)){
-        System.out.println("로그인 성공!");
+        AppPrint.loginSueccess();
         return true;
       }
     }
-    System.out.println("로그인 실패!");
+    AppPrint.loginFail();
     return false;
   }
   @Override

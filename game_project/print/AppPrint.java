@@ -46,4 +46,24 @@ public class AppPrint {
           "----------------------------------------\n";
     System.out.println(str);
   }
+
+  public static void loginSueccess(){
+    System.out.println("로그인 성공!");
+  }
+
+  public static void loginFail(){
+    System.out.println("로그인 실패!");
+  }
+
+  public static void inputIdMessage(){
+    System.out.print("아이디를 입력하세요 : ");
+  }
+
+  public static void inputPwMessage(){
+    System.out.print("비밀번호를 입력하세요 : ");
+  }
+
+  public static void inputNameMessage(){
+    System.out.print("이름을 입력하세요 : ");
+  }
 }

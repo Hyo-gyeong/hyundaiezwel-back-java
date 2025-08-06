@@ -18,7 +18,6 @@ public class AppStart {
   public static void main(String[] args) {
     RSP rsp = new RSP();
     Guess guess = new Guess();
-    UserDAO userDAO = new UserDAO();
     UserAccountService accountService = new UserAccountService();
 
     System.out.println("실행할 번호를 입력하세요.\n1. 회원가입 2.로그인");
@@ -44,17 +43,17 @@ public class AppStart {
         } else if (inputNum == 3){ // 랜덤숫자 맞추기 게임
           guess.gameStart();
         } else if (inputNum == 4){ // 로그인
-          System.out.print("아이디를 입력하세요 : ");
+          AppPrint.inputIdMessage();
           String id = sc.next();
-          System.out.print("비밀번호를 입력하세요 : ");
+          AppPrint.inputPwMessage();
           String pw = sc.next();
           accountService.userLogin(id, pw);
         } else if (inputNum == 5){ // 회원가입
-          System.out.print("아이디를 입력하세요 : ");
+          AppPrint.inputIdMessage();
           String id = sc.next();
-          System.out.print("비밀번호를 입력하세요 : ");
+          AppPrint.inputPwMessage();
           String pw = sc.next();
-          System.out.print("이름을 입력하세요 : ");
+          AppPrint.inputNameMessage();
           String name = sc.next();
           accountService.signup(new UserDTO(id, name, pw));
         } else if (inputNum == 6){ // 종료
