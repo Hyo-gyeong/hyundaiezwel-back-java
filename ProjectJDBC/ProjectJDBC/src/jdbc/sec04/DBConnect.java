@@ -2,11 +2,14 @@ package jdbc.sec04;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class DBConnect {
     // 데이터베이스 연결 후
     // connection 객체 반환하는 메소드
-    public Connection getConnection(){
+    public static Connection getConnection(){
         Connection con = null; // connection객체 초기화
 
         try{
@@ -27,5 +30,18 @@ public class DBConnect {
         }
 
         return con; // connection 객체 반환
+    }
+
+    public static void close(PreparedStatement pstmt, ResultSet rs){
+        try{
+            if (pstmt != null){
+                pstmt.close();
+            }
+            if (rs != null){
+                rs.close();
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 }
