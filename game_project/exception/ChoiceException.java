@@ -1,4 +1,4 @@
-package game_project.exception;
+package exception;
 
 public class ChoiceException extends Exception {
   public ChoiceException(String msg){

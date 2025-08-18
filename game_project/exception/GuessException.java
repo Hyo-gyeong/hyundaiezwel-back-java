@@ -1,4 +1,4 @@
-package game_project.exception;
+package exception;
 
 public class GuessException extends Exception{
   public GuessException(String msg){
