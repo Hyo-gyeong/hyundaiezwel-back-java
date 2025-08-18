@@ -1,7 +1,7 @@
-package game_project.validator;
+package validator;
 
-import game_project.exception.ChoiceException;
-import game_project.exception.GuessException;
+import exception.ChoiceException;
+import exception.GuessException;
 
 // ## validator에서는 오직 간단한 검증만 수행 ##
 public class GameValidator {
