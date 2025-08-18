@@ -1,4 +1,4 @@
-package game_project.print;
+package print;
 
 public class GuessPrint {
   private static String str;

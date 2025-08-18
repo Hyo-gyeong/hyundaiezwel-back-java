@@ -1,4 +1,4 @@
-package game_project.print;
+package print;
 
 public class GaBaBoPrint {
   public static void startMessage(){
