@@ -1,9 +1,10 @@
-package game_project.interfaces.user;
+package interfaces.user;
 
-import game_project.user.UserDTO;
+import user.UserDTO;
 
 public interface AccountInterface {
-  public boolean userLogin(String id, String pw);
-  public void logout();
-  public UserDTO signup(UserDTO newUser);  
+  public String login(String id, String pw);
+  public boolean logout(String userPK);
+  public void signup(UserDTO newUser);  
+  public boolean unregister(String userId);
 }

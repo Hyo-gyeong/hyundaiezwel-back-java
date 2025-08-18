@@ -1,10 +1,12 @@
-package game_project.interfaces.user;
+package interfaces.user;
 
-import game_project.user.UserDTO;
+import user.UserDTO;
 
 public interface UserDAOInterface {
-  public void addUser(UserDTO u);
-  public void deleteUserByPK(int pk);
-  public UserDTO getUserByPK(int pk);
-  public void updateUser(int pk, UserDTO u);
+  public boolean addUser(UserDTO u) throws Exception;
+  public boolean deleteUser(String userId) throws Exception;
+  public boolean checkIfUserExists(UserDTO dto) throws Exception;
+  public boolean login(String userId, int ifLogin) throws Exception;
+  public boolean logOut(String userPK, int ifLogin) throws Exception;
+  public String getUserPK(String userId) throws Exception;
 }

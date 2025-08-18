@@ -1,4 +1,4 @@
-package game_project.interfaces.game;
+package interfaces.game;
 
 public interface GuessInterface {
   static int number = (int) (Math.random()*10) +1;

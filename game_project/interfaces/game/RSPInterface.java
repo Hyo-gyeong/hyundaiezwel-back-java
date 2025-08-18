@@ -1,4 +1,4 @@
-package game_project.interfaces.game;
+package interfaces.game;
 
 public interface RSPInterface {
   public void gameStart();
