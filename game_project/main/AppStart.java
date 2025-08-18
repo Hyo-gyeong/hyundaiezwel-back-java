@@ -1,32 +1,31 @@
-package game_project.main;
+package main;
 
 import java.util.Scanner;
 
-import game_project.print.AppPrint;
-import game_project.print.GaBaBoPrint;
-import game_project.service.user.UserAccountService;
-import game_project.user.UserDAO;
-import game_project.user.UserDTO;
-import game_project.game.RSP;
-import game_project.exception.InputNumberException;
-import game_project.game.Guess;
-import game_project.info.AppInfo;
+import controller.user.AccountController;
+import print.AppPrint;
+import print.GaBaBoPrint;
+import user.UserDTO;
+import exception.InputNumberException;
+import game.Guess;
+import game.RSP;
+import info.AppInfo;
 
 public class AppStart {
   // Scanner 자원은 한 번만 생성해서 사용
   public static final Scanner sc = new Scanner(System.in);
-  public static void main(String[] args) {
+  public static String loginUser = "";
+  public static void main(String[] args)  {
     RSP rsp = new RSP();
     Guess guess = new Guess();
-    UserAccountService accountService = new UserAccountService();
+    AccountController accountController = new AccountController();
 
-    System.out.println("실행할 번호를 입력하세요.\n1. 회원가입 2.로그인");
     // 환영 메시지 출력
     AppPrint.welcomeMessage();
     while (true){
       try {
         // 메뉴 목록 출력
-        AppPrint.menuMessage();
+        AppPrint.menuMessage(loginUser);
         // 메뉴 입력문 출력
         AppPrint.inputMenuMessage();
         // 입력값을 문자열로 받고 예외처리
@@ -42,26 +41,45 @@ public class AppStart {
           rsp.gameStart();
         } else if (inputNum == 3){ // 랜덤숫자 맞추기 게임
           guess.gameStart();
-        } else if (inputNum == 4){ // 로그인
-          AppPrint.inputIdMessage();
-          String id = sc.next();
-          AppPrint.inputPwMessage();
-          String pw = sc.next();
-          accountService.userLogin(id, pw);
-        } else if (inputNum == 5){ // 회원가입
-          AppPrint.inputIdMessage();
-          String id = sc.next();
-          AppPrint.inputPwMessage();
-          String pw = sc.next();
-          AppPrint.inputNameMessage();
-          String name = sc.next();
-          accountService.signup(new UserDTO(id, name, pw));
+        } else if (inputNum == 4){
+          if (loginUser.equals("")){ // 로그인
+            AppPrint.inputIdMessage();
+            String id = sc.next();
+            AppPrint.inputPwMessage();
+            String pw = sc.next();
+            String rslt = accountController.login(id, pw);
+            if (!rslt.equals("")){
+              loginUser = rslt;
+            }
+          } else { // 로그아웃
+            boolean ifSuccess = accountController.logout(loginUser);
+            if (ifSuccess){
+              loginUser = "";
+            }
+          }
+        } else if (inputNum == 5){ 
+          if (loginUser.equals("")){ // 회원 가입
+            AppPrint.inputIdMessage();
+            String id = sc.next();
+            AppPrint.inputPwMessage();
+            String pw = sc.next();
+            AppPrint.inputNameMessage();
+            String name = sc.next();
+            accountController.signup(new UserDTO(id, name, pw));
+          } else { // 회원 탈퇴
+            boolean ifSuccess = accountController.unregister(loginUser);
+            if (ifSuccess){
+              loginUser = "";
+            }
+          }
         } else if (inputNum == 6){ // 종료
           AppPrint.endGameMessage();
           break;
         }
       } catch (InputNumberException e){
         System.out.println(e.getMessage());
+      } catch (Exception e){
+        e.printStackTrace();
       }
     }
     sc.close();
