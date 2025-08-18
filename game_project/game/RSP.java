@@ -1,11 +1,11 @@
-package game_project.game;
+package game;
 
-import game_project.main.AppStart;
-import game_project.exception.ChoiceException;
-import game_project.exception.InputNumberException;
-import game_project.interfaces.game.RSPInterface;
-import game_project.print.GaBaBoPrint;
-import game_project.validator.GameValidator;
+import main.AppStart;
+import exception.ChoiceException;
+import exception.InputNumberException;
+import interfaces.game.RSPInterface;
+import print.GaBaBoPrint;
+import validator.GameValidator;
 
 public class RSP implements RSPInterface{
   @Override

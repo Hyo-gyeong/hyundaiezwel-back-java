@@ -1,9 +1,9 @@
-package game_project.game;
+package game;
 
-import game_project.exception.InputNumberException;
-import game_project.interfaces.game.GuessInterface;
-import game_project.main.AppStart;
-import game_project.print.GuessPrint;
+import exception.InputNumberException;
+import interfaces.game.GuessInterface;
+import main.AppStart;
+import print.GuessPrint;
 
 public class Guess implements GuessInterface{
   // 1-10 사이의 임의의 수를 정답으로 설정
