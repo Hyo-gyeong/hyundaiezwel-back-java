@@ -11,10 +11,11 @@ public class PublisherDAO {
     PreparedStatement pstmt = null;
     ResultSet rs = null;
     PublisherDTO pubDTO = null;
-    ArrayList<PublisherDTO> pubList = null;
+    ArrayList<PublisherDTO> pubList = new ArrayList<>();
 
     public ArrayList<PublisherDTO> getAllPublisher(){
         try {
+            connection = DBConnect.getConnection();
             String sql = "select * from publisher";
             pstmt = connection.prepareStatement(sql);
             rs = pstmt.executeQuery();
