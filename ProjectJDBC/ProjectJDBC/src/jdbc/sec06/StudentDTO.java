@@ -1,3 +1,5 @@
+package jdbc.sec06;
+
 import java.util.Date;
 
 //학생 한명의 정보를 담아 교환하기 위한 클래스
