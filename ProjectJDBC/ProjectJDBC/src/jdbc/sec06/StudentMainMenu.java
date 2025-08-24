@@ -1,3 +1,5 @@
+package jdbc.sec06;
+
 import java.util.Scanner;
 
 public class StudentMainMenu {
