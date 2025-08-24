@@ -1,3 +1,5 @@
+package jdbc.sec06;
+
 import java.util.ArrayList;
 
 //DAO의 메소드 표준 정의
