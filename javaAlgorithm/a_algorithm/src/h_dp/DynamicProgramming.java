@@ -1,0 +1,35 @@
+package h_dp;
+
+public class DynamicProgramming {
+    public static void main(String[] args) {
+        int n = 5;
+        int res = fiboRecursive(n);
+        // int res = fibonacci(n);
+        System.out.println(res);
+
+    }
+
+    private static int fiboRecursive(int n) {
+        if (n == 0){
+            return 0;   
+        }
+        if (n == 1 || n == 2){
+            return 1;
+        }
+        else
+            return fiboRecursive(n-1) + fiboRecursive(n-2);
+    }
+
+    private static int fibonacci(int n){
+        if (n < 1) return -1;
+        int prev = 1;
+        int cur = 1;
+
+        for (int i = 3; i <= n; i++){ // 이전 해 기억하기
+            int temp = cur;
+            cur = prev + cur;
+            prev = temp;
+        }
+        return cur;
+    }
+}
