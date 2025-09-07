@@ -1,0 +1,5 @@
+package j_adaptor.auth;
+
+public enum SocialLoginProvider {
+    NAVER, GOOGLE
+}
