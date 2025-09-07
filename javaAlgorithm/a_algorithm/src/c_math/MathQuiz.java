@@ -62,11 +62,11 @@ public class MathQuiz {
      * r2 = G(Pq - N)
      */
 
-    private static int gcd2(int a, int b) {
-        while (b > 0){
+    private static int gcd2(int b, int a) {
+        while (a > 0){
             int tmp = b;
             b = a % b;
-            a = tmp;
+            a = b;
         }
         return a;
     }
