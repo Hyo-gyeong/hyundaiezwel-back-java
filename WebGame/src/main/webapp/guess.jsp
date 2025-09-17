@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Guess Game</title>
+
 <style>
     body {
         margin: 0;
@@ -21,32 +22,29 @@
 
     .container {
         background: rgba(255, 255, 255, 0.85);
-        padding: 40px 60px;
+        width: 75%;     /* 가로 75% */
+        height: 65%;    /* 세로 65% */
+        padding: 40px;
         border-radius: 16px;
         box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         text-align: center;
-        max-width: 500px;
     }
 
     h1 {
-        margin-bottom: 25px;
         color: #444;
+        margin-bottom: 50px;
     }
 
-    form {
-        margin-top: 20px;
-    }
-
-    input[type="text"] {
-        padding: 10px;
-        border-radius: 6px;
-        border: 1px solid #ccc;
+	 input[type="text"] {
         width: 150px;
+        padding: 10px 14px;
+        border-radius: 25px;
+        border: 1px solid #ccc;
         font-size: 16px;
-        margin-right: 10px;
-        transition: border 0.3s ease, box-shadow 0.3s ease;
+        outline: none;
+        transition: all 0.3s ease;
+        
     }
-
     input[type="text"]:focus {
         border: 1px solid #f9c5d1;
         box-shadow: 0 0 6px #f9c5d1;
@@ -57,7 +55,9 @@
         background: linear-gradient(135deg, #fff6b7, #f9c5d1);
         border: none;
         padding: 10px 20px;
-        margin: 10px 5px;
+        margin-top: 60px;
+        margin-bottom: 5px;
+        margin-left:10px;
         border-radius: 8px;
         font-size: 16px;
         font-weight: bold;
@@ -72,7 +72,6 @@
         box-shadow: 0 5px 14px rgba(0,0,0,0.25);
     }
 
-   
 
     a {
         display: inline-block;
@@ -92,12 +91,13 @@
     <div class="container">
         <h1>숫자 알아맞히기 게임에 오신걸 환영합니다!</h1>
         <form method="post" action="${contextPath }/Game/guess">
-            <p>1–10 사이의 숫자를 입력하세요:
-            <input type="text" id="num" name="num" placeholder="숫자 입력"></p>
+            <h3>1–10 사이의 숫자를 입력하세요:
+            <input type="text" id="num" name="num" placeholder="숫자 입력"></h3>
+            <jsp:include page="guessRslt.jsp" flush="true"/>
             <button type="submit" name="btnAction" value="reset">다시하기</button>
             <button type="submit" name="btnAction" value="submit">선택 완료</button>
         </form>
-        <jsp:include page="guessRslt.jsp" flush="true"/>
+        
 
         <a href="${contextPath}/main.jsp">메인으로 돌아가기</a>
     </div>
