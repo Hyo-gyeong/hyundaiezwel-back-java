@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"  />
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -61,11 +63,41 @@
 </head>
 <body>
     <div class="container">
+    <%
+    		if (session.getAttribute("loginUserId") == null){
+    	%>
+    		<h1>게임을 하려면 로그인을 해야합니다</h1>
+    		<form method="post" action="${contextPath}/User/login">
+    			ID : <input type="text" id="id" name="id">
+    			PW : <input type="password" id="pw" name="pw">
+    			<button type="submit" name="action" value="submit">로그인</button>
+    		</form>
+    		<a href="${contextPath}/signup.jsp">회원 가입</a>
+    		<%
+			String msg = (String) request.getAttribute("msg");
+			if (msg != null) {
+		%>
+			<span style="color: red; font-weight: bold;"><%=msg%>!</span>
+			<br>
+		<%
+			}
+		%>
+    	<%		
+    		} else {
+    %>
         <h1>게임을 고르세요</h1>
         <ul>
-            <li><a href="rsp.jsp">가위바위보</a></li>
-            <li><a href="guess.jsp">숫자 알아맞히기</a></li>
+            <li><a href="${contextPath}/rsp.jsp">가위바위보</a></li>
+            <li><a href="${contextPath}/guess.jsp">숫자 알아맞히기</a></li>
         </ul>
+        <form method="post"action="${contextPath}/User/logout">
+        <%= session.getAttribute("loginUserName") %>님 안녕하세요!
+        		<input type="text" id="id" name="id" hidden value=<%= session.getAttribute("loginUserId") %>>
+    			<button type="submit" name="action" value="submit">로그아웃</button>
+    		</form>
+    <%		
+    		}
+    %>
     </div>
 </body>
 </html>

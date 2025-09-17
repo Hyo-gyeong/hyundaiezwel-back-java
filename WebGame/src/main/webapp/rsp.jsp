@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"  />
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -90,7 +92,7 @@ a:hover {
 <body>
 	<div class="container">
 		<h1>가위바위보 게임에 오신걸 환영합니다!</h1>
-		<form name="guessform" method="post" action="rspServlet">
+		<form name="guessform" method="post" action="${contextPath}/Game/rsp">
 			<div class="choices">
 				<input type="radio" id="scissors" value="0" name="rsp">
 					<label for="scissors">✌️<span style="font-size: 16px;">가위</span></label>
@@ -99,13 +101,12 @@ a:hover {
 				<input type="radio" id="paper" value="2" name="rsp">
 					<label for="paper">🖐<span style="font-size: 16px;">보</span></label>
 			</div>
-			<button type="submit" name="action" value="submit">선택 완료</button>
-   			<button type="submit" name="action" value="reset">다시하기</button>
+			<button type="submit" name="btnAction" value="reset">다시하기</button>
+			<button type="submit" name="btnAction" value="submit">선택 완료</button>
 		</form>
+		<jsp:include page="rspRslt.jsp" flush="true"/>
 
-		<%@include file="rspRslt.jsp"%>
-
-		<a href="main.jsp">메인으로 돌아가기</a>
+		<a href="${contextPath}/main.jsp">메인으로 돌아가기</a>
 	</div>
 </body>
 </html>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"  />
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -89,15 +91,15 @@
 <body>
     <div class="container">
         <h1>숫자 알아맞히기 게임에 오신걸 환영합니다!</h1>
-        <form method="post" action="guessServlet">
+        <form method="post" action="${contextPath }/Game/guess">
             <p>1–10 사이의 숫자를 입력하세요:
             <input type="text" id="num" name="num" placeholder="숫자 입력"></p>
-            <button type="submit" name="action" value="submit">선택 완료</button>
-   			<button type="submit" name="action" value="reset">다시하기</button>
+            <button type="submit" name="btnAction" value="reset">다시하기</button>
+            <button type="submit" name="btnAction" value="submit">선택 완료</button>
         </form>
-        <%@include file="guessRslt.jsp"%>
+        <jsp:include page="guessRslt.jsp" flush="true"/>
 
-        <a href="main.jsp">메인으로 돌아가기</a>
+        <a href="${contextPath}/main.jsp">메인으로 돌아가기</a>
     </div>
 </body>
 </html>
