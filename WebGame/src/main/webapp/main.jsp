@@ -164,6 +164,9 @@
         border-radius: 6px;
     }
 </style>
+<%	if (request.getAttribute("signupSuccess") != null){%>
+   		<script>alert("회원가입이 되었습니다!");</script>
+ <%}%>
 </head>
 <body>
     <div class="container">

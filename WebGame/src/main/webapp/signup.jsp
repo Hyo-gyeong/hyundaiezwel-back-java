@@ -112,6 +112,7 @@ button:hover, .link-btn:hover {
 				<input type="text" id="name" name="name" required>
 			</div>
 			<div class="btn-group">
+				<jsp:include page="/signupRslt.jsp"></jsp:include>
 				<button type="submit">회원가입</button>
 				<a href="${contextPath}/main.jsp" class="link-btn">메인으로 돌아가기</a>
 			</div>

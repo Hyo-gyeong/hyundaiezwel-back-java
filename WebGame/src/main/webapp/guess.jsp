@@ -86,15 +86,22 @@
         color: #d46a92;
     }
 </style>
+<script>
+function press(f){
+    if(f.keyCode == 13){ //javascript에서 13 = enter키
+    		guessForm.submit();
+    }
+}
+</script>
 </head>
 <body>
     <div class="container">
         <h1>숫자 알아맞히기 게임에 오신걸 환영합니다!</h1>
-        <form method="post" action="${contextPath }/Game/guess">
+        <form method="post" action="${contextPath }/Game/guess" name="guessForm">
             <h3>1–10 사이의 숫자를 입력하세요:
-            <input type="text" id="num" name="num" placeholder="숫자 입력"></h3>
+            <input type="text" id="num" name="num" placeholder="숫자 입력" onkeypress="JavaScript:press(this.form)"></h3>
             <jsp:include page="guessRslt.jsp" flush="true"/>
-            <button type="submit" name="btnAction" value="reset">다시하기</button>
+            <button type="" name="btnAction" value="reset">다시하기</button>
             <button type="submit" name="btnAction" value="submit">선택 완료</button>
         </form>
         

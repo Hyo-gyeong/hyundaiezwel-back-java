@@ -21,7 +21,7 @@ String rslt = (String) request.getAttribute("rslt");
 if (rslt != null) {
 %>
 <div class="result-box <%=rslt.toLowerCase()%>">
-	<span style="font-weight: bold">You <%=rslt%>! 🎉
+	<span style="font-weight: bold"><%=rslt%>! 🎉
 	</span><br>
 </div>
 <%
