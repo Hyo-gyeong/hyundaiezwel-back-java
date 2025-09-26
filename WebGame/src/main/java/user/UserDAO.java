@@ -32,13 +32,25 @@ public class UserDAO implements UserDAOInterface {
 	public boolean addUser(UserDTO u) throws Exception {
 		try {
 			connection = dataFactory.getConnection();
-			String sql = "insert into account (userid, name, userpw) values (?,?,?)";
+			// id가 문자열 타입이어서 10 < 9 인 경우가 생기므로 TO_NUMBER로 타입 변환
+			String sql = "select MAX(TO_NUMBER(id)) AS maxId from account";
 			pstmt = connection.prepareStatement(sql);
-			pstmt.setString(1, u.getId());
-			pstmt.setString(2, u.getName());
-			pstmt.setString(3, u.getPw());
+			rs = pstmt.executeQuery();
+			int maxId = 0;
+			if (rs.next()) {  // 커서를 첫 행으로 이동
+			    maxId = rs.getInt("maxId")+1; 
+			}
+			System.out.println(maxId);
+			
+			sql = "insert into account (id, userid, userpw, name) values (?,?,?,?)"; // iflogin은 0
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, String.valueOf(maxId));
+			pstmt.setString(2, u.getUserId());
+			pstmt.setString(3, u.getName());
+			pstmt.setString(4, u.getPw());
 			int rslt = pstmt.executeUpdate();
 			if (rslt >= 0) {
+				System.out.println("insert 성공");
 				return true;
 			}
 		} catch (Exception e) {
@@ -155,6 +167,19 @@ public class UserDAO implements UserDAOInterface {
 		return false;
 	}
 	
+	public static void close(PreparedStatement pstmt, ResultSet rs){
+        try{
+            if (pstmt != null){
+                pstmt.close();
+            }
+            if (rs != null){
+                rs.close();
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
 	public static void close(Connection con, PreparedStatement pstmt, ResultSet rs){
         try{
             if (con != null){
