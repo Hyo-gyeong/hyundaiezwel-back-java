@@ -1,0 +1,30 @@
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+	function testIt(){
+		// 입력된 내용을 추출해서 test-innerHTML 영역에 출력
+		var val = document.getElementById("input-test").value; // html 태그 코드를 넣어버리면
+		// var testInnerHtml = document.getElementById("test-innerHTML");
+		// testInnerHtml.innerHTML = val; // 문자로 취급이 안돼서 보이지 않게됨, 스크립트는 실행을 하지는 않음
+		// innerHTML를 사용한다는 것을 확인 -> 태그가 텍스트로 안나타 나니까 이를 이용해서 공격시도
+		// <div style="background-color:red">악성코드</div>를 입력하면 화면이 의도한 것과 다르게 변경됨
+		// 따라서innerHTML말고 text 속성을 사용해야함
+		
+		// jquery 사용 코드
+		var testHTML = document.getElementById("test-innerHTML");
+		// $(testHTML).html(val); // 스크립트 태그 해석해서 실행까지 실행 - xss 공격에 취약
+		// xss에 안전한 jquery 메서드
+		// .text(), .prop(), .val()
+		$(testHTML).text(val);
+		
+	}
+</script>
+<head>this is a test</head>
+<body>  
+    <input id="input-test" type="text" name="foo" />
+    <input type="button" onClick="testIt();" value="test!"/>
+    <div id="test-html">
+    </div>
+    <div id="test-innerHTML">
+    </div>
+</body>
