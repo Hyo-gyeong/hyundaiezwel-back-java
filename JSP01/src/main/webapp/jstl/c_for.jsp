@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" import="java.util.*"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"   %>
+<%
+	ArrayList<String> dataList = new ArrayList<String>();
+	dataList.add("hello");
+	dataList.add("world");
+	dataList.add("");
+	request.setAttribute("dataList", dataList);
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<c:forEach var="data" items="${datalist}">
+		${data} <br>
+	</c:forEach>
+	<c:forEach var="i" begin="1" end="10" step="1" varStatus="loop">
+		i=${i}, 반복횟수 : ${loop.count}, index:${loop.index },
+		${loop.first? '첫번째':''} ${loop.last? '마지막':''}<br>
+	</c:forEach>
+	<c:forEach var="i" begin="1" end="10" step="2">
+		5 * ${i} = ${5*i}<br>
+	</c:forEach>
+	<hr>
+	forTokens : 주어진 문자열을 구분자로 분리<br>
+	<c:set var="fruits" value="사과, 파일애플, 망고, 귤, 바나나"/>
+	<c:forTokens var="token" items="${fruits }" delims=",">
+		${token }<br>
+	</c:forTokens>
+</body>
+</html>
