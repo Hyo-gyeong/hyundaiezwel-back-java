@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>Servlet01</display-name>
+  <welcome-file-list> <!-- 별다른 uri없이 요청이 들어오면 (http://서버주소:포트번호//context) => 응답할 페이지 설정해놓은 태그-->
+  <!-- 이중에 일치하는 이름의 파일을 리턴 -->
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.xhtml</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.xhtml</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+    	<servlet-name>myFirst</servlet-name>
+    	<servlet-class>sec01.FirstServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>myFirst</servlet-name>
+  	<url-pattern>/first</url-pattern> <!-- [context]/first 이렇게 url이 만들어짐, web.xml이 변경되면 서버 재구동해야함 -->
+  	<!-- 요청의 uri가 달라지면 객체도 새롭게 생성됨, 객체는 uri로 구분 -->
+  </servlet-mapping>
+  
+  <servlet>
+    	<servlet-name>mySecond</servlet-name>
+    	<servlet-class>sec01.SecondServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>mySecond</servlet-name>
+  	<url-pattern>/second</url-pattern>
+  </servlet-mapping>
+  <!-- 
+  <servlet>
+    	<servlet-name>myJoin</servlet-name>
+    	<servlet-class>sec02.JoinServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>myJoin</servlet-name>
+  	<url-pattern>/insertMember</url-pattern>
+  </servlet-mapping>
+  -->
+</web-app>
